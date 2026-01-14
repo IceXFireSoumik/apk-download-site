@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Download MPOS App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -15,22 +16,35 @@
             justify-content: center;
             margin: 0;
         }
+
         .container {
             background: rgba(0, 0, 0, 0.25);
             padding: 40px;
             border-radius: 12px;
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             width: 90%;
         }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 140px;
+            height: auto;
+        }
+
         h1 {
             margin-bottom: 10px;
         }
+
         p {
             font-size: 14px;
             opacity: 0.9;
             margin-bottom: 25px;
         }
+
         a.download-btn {
             display: inline-block;
             padding: 14px 24px;
@@ -39,10 +53,13 @@
             text-decoration: none;
             font-size: 16px;
             border-radius: 6px;
+            transition: background 0.3s ease;
         }
+
         a.download-btn:hover {
             background-color: #00a844;
         }
+
         .note {
             font-size: 12px;
             margin-top: 20px;
@@ -51,16 +68,24 @@
     </style>
 </head>
 <body>
+
     <div class="container">
+        <div class="logo">
+            <img src="logo.svg" alt="Company Logo">
+        </div>
+
         <h1>MPOS Application</h1>
         <p>Click below to download the latest APK build</p>
+
         <a class="download-btn"
            href="https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v0.0.1/stage_13Jan_mpos4.apk">
             Download APK
         </a>
+
         <div class="note">
             ⚠ Enable <b>Install from Unknown Sources</b> on your Android device
         </div>
     </div>
+
 </body>
 </html>
