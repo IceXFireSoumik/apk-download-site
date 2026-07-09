@@ -4,105 +4,773 @@
     <meta charset="UTF-8">
     <title>Download MPOS App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download the latest Ginesys MPOS Android application.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+:root {
+    --bg-0: #070b14;
+    --bg-1: #0f172a;
+    --surface: rgba(255, 255, 255, 0.06);
+    --surface-hover: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-soft: #cbd5e1;
+    --brand: #75bf45;
+    --brand-dark: #5a9934;
+    --brand-glow: rgba(117, 191, 69, 0.35);
+    --accent: #22c55e;
+    --accent-soft: rgba(34, 197, 94, 0.12);
+    --accent-border: rgba(34, 197, 94, 0.35);
+    --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.45);
+    --radius-xl: 24px;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    background: radial-gradient(circle at top, #2a5298, #0f2027);
-    color: #ffffff;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+    background: var(--bg-0);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-.container {
-    background: #3f5f8f; /* softer blue */
-    padding: 42px 36px;
-    border-radius: 18px;
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(117, 191, 69, 0.18), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 0%, rgba(59, 130, 246, 0.12), transparent 50%),
+        radial-gradient(ellipse 40% 35% at 0% 100%, rgba(117, 191, 69, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-0) 100%);
+}
+
+.page-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.orb-1 {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(117, 191, 69, 0.15);
+}
+
+.orb-2 {
+    width: 280px;
+    height: 280px;
+    bottom: 10%;
+    right: -80px;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+.page {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 20px 48px;
+    animation: fadeUp 0.6s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
     text-align: center;
-    max-width: 440px;
-    width: 92%;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-}
-
-.logo img {
-    max-width: 170px;
-    margin-bottom: 18px;
-}
-
-.quote {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: 0.4px;
-}
-
-.tagline {
-    font-size: 14px;
-    opacity: 0.85;
     margin-bottom: 28px;
 }
 
-.download-btn {
-    display: inline-block;
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #00e676, #00c853);
-    color: #003b1f;
-    text-decoration: none;
-    font-size: 17px;
+.logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
+}
+
+.logo-wrap img {
+    max-width: 180px;
+    height: auto;
+    display: block;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+    font-size: 12px;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--brand);
+    background: rgba(117, 191, 69, 0.1);
+    border: 1px solid rgba(117, 191, 69, 0.25);
+    border-radius: 999px;
+}
+
+.hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 10px var(--brand-glow);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
+.hero-title {
+    font-size: clamp(1.75rem, 5vw, 2.125rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 340px;
+    margin: 0 auto 20px;
+}
+
+.feature-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.feature-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.feature-chip svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0.8;
+}
+
+.card {
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xl);
+    padding: 28px 24px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+}
+
+.card-header {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.section {
+    margin-bottom: 8px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.section-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 200, 83, 0.4);
+    background: rgba(117, 191, 69, 0.12);
+    border: 1px solid rgba(117, 191, 69, 0.2);
+    color: var(--brand);
+    flex-shrink: 0;
+}
+
+.section-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+
+.section-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: var(--text-soft);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.version-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.version-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.version-row:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+}
+
+.version-row.latest {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(117, 191, 69, 0.06) 100%);
+    border-color: var(--accent-border);
+    box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.08) inset;
+}
+
+.version-row.latest::before {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.version-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.version-label {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.latest-pill {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    color: #052e16;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+.apk-pill {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+}
+
+.version-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.version-compat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #86efac;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.version-compat svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 128px;
+    padding: 12px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: #052e16;
+    text-decoration: none;
+    background: linear-gradient(135deg, #86efac 0%, #22c55e 50%, #16a34a 100%);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
+    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+}
+
+.download-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(0, 200, 83, 0.55);
+    box-shadow: 0 8px 28px rgba(34, 197, 94, 0.45);
 }
 
-.note {
-    font-size: 12px;
-    margin-top: 22px;
-    opacity: 0.8;
-    line-height: 1.4;
+.download-btn:active {
+    transform: translateY(0);
 }
 
-.footer {
-    margin-top: 26px;
+.download-btn:focus-visible {
+    outline: 2px solid #86efac;
+    outline-offset: 3px;
+}
+
+.install-guide {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.install-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+}
+
+.install-title svg {
+    width: 16px;
+    height: 16px;
+    color: #fbbf24;
+}
+
+.install-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.install-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
     font-size: 11px;
-    opacity: 0.6;
+    font-weight: 800;
+    color: var(--brand);
+    background: rgba(117, 191, 69, 0.12);
+    border: 1px solid rgba(117, 191, 69, 0.25);
+    border-radius: 50%;
 }
-</style>
 
+.install-step strong {
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+.page-footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.empty-state {
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+}
+
+@media (max-width: 520px) {
+    .page {
+        padding: 28px 16px 40px;
+    }
+
+    .card {
+        padding: 22px 16px;
+    }
+
+    .version-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .download-btn {
+        width: 100%;
+    }
+
+    .feature-row {
+        gap: 8px;
+    }
+
+    .feature-chip {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+}
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDUuODMiIGhlaWdodD0iNjQuOTkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTA1LjgzIDY0Ljk5Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjNzViZjQ1OwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGZpbGw6ICM0MjU1NGE7CiAgICAgIH0KCiAgICAgIC5jbHMtMyB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQpOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQiIHgxPSIxNi45MiIgeTE9Ii01NjIuNjUiIHgyPSIxNi45MiIgeTI9Ii02MjcuNDIiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNTYyLjQ1KSBzY2FsZSgxIC0xKSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3NWJmNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuMjEiIHN0b3AtY29sb3I9IiM3NGJjNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzZhYjA0NSIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii41OCIgc3RvcC1jb2xvcj0iIzYzOWU0NCIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii43NiIgc3RvcC1jb2xvcj0iIzU5ODQ0NiIvPgogICAgICA8c3RvcCBvZmZzZXQ9Ii45MyIgc3RvcC1jb2xvcj0iIzQ4NjQ0OSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0MjU1NGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNjIuODMsMzQuNTljLTEtLjAyLTEuODQtLjc1LTIuMDEtMS43NC0yLjEtMTQuMjgtMTEuNzMtMjguNzEtMjguNDMtMjguNzEtMTUuNjUsLjAzLTI4LjM0LDEyLjcyLTI4LjM3LDI4LjM3LC4xLDEuMTEtLjcyLDIuMDgtMS44MywyLjE4LTEuMTEsLjEtMi4wOC0uNzItMi4xOC0xLjgzLS4wMS0uMTItLjAxLS4yMywwLS4zNUMtLjAyLDE0LjYxLDE0LjQ3LC4wOCwzMi4zNywuMDZoLjAyQzQ4Ljg5LC4wNiw2MS45NiwxMy4wMSw2NC44NiwzMi4zMWMuMTQsMS4wOS0uNiwyLjEtMS42OSwyLjI5LS4xMSwuMDUtLjIzLC4wNS0uMzQsMFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkzLjIxLDY0Ljk4Yy04LjQsLjA2LTE2LjQ0LTMuNDQtMjIuMTMtOS42Mi01LjctNi4yNy05LjI4LTE0LjE2LTEwLjI2LTIyLjU4LS4xMy0xLjEyLC42Ny0yLjEyLDEuNzktMi4yNXMyLjEyLC42NywyLjI1LDEuNzloMGMxLjg3LDE0LjI4LDExLjQsMjguNjMsMjguNDMsMjguNjMsMTUuNjksMCwyOC40MS0xMi43NCwyOC40LTI4LjQzaDBjLS4xLTEuMTEsLjcyLTIuMDgsMS44My0yLjE4LDEuMTEtLjEsMi4wOCwuNzIsMi4xOCwxLjgzLDAsLjEyLDAsLjIzLDAsLjM1LS4wMiwxNy45My0xNC41NiwzMi40Ni0zMi40OSwzMi40NloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTExOC42MiwxNy45Yy0uNjMtLjA2LTEuMi0uNC0xLjU0LS45NEMxMDguNTYsMy44NSw5MS4wMiwuMTQsNzcuOTIsOC42NmMtMy4zMSwyLjE2LTYuMTQsNC45OC04LjMsOC4zLS42NywuOTEtMS45NSwxLjEtMi44NiwuNDMtLjgzLS42MS0xLjA3LTEuNzQtLjU3LTIuNjRDNzUuODYtLjIxLDk1LjgzLTQuNSwxMTAuNzksNS4xOGMzLjgzLDIuNDgsNy4xLDUuNzQsOS41Nyw5LjU3LC42LC45NCwuMzQsMi4yLS42LDIuODEtLjMsLjI4LS43MywuNDEtMS4xNCwuMzRaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMjMuNjYsMzQuNTloLTI4LjE3Yy0xLjExLDAtMi4wMS0uOS0yLjAxLTIuMDFzLjktMi4wMSwyLjAxLTIuMDFoMjguMTdjMS4wOS0uMDIsMS45OCwuODUsMiwxLjkzdi4wOGMtLjAxLDEuMTEtLjksMi4wMS0yLDIuMDFaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zMi40NSw2NC45OGMtMTEuNjYsMC0yMi40Mi02LjI4LTI4LjE1LTE2LjQzLS4yLS4zNC0uNC0uNzQtLjYtMS4wOEMxLjMzLDQyLjg3LC4wOSwzNy43NiwuMDgsMzIuNTljMC0xLjExLC45LTIuMDEsMi4wMS0yLjAxczIuMDEsLjksMi4wMSwyLjAxYy0uMDMsNC41NCwxLjAyLDkuMDMsMy4wNywxMy4wOSwuMTYsLjMyLC4zNCwuNjQsLjU0LC45NCw3LjY3LDEzLjY3LDI0Ljk3LDE4LjU0LDM4LjY0LDEwLjg4LDIuOTUtMS42NSw1LjU4LTMuODIsNy43Ni02LjM5LDEuMTYtMS4zOCwyLjE4LTIuODYsMy4wNy00LjQyLC41Ni0uOTYsMS43OS0xLjI4LDIuNzUtLjc0LC45NiwuNTMsMS4zLDEuNzQsLjc3LDIuNjksMCwuMDItLjAyLC4wNC0uMDMsLjA1LTEuMDQsMS44Mi0yLjI0LDMuNTQtMy41OSw1LjE1LTYuMjQsNy4wNi0xNS4yLDExLjEyLTI0LjYzLDExLjE0WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMzEuNzYsNjQuOThDMTMuODcsNjQuNTktLjMxLDQ5Ljc4LC4wOCwzMS44OSwuNDYsMTQuNTUsMTQuNDIsLjU5LDMxLjc2LC4yMWMxLjA5LS4wMywxLjk5LC44MywyLjAxLDEuOTJ2LjA5Yy4wMywxLjA5LS44MywxLjk5LTEuOTIsMi4wMWgtLjA5Yy0xNS42NiwuMzYtMjguMDcsMTMuMzYtMjcuNywyOS4wMiwuMzUsMTUuMTUsMTIuNTUsMjcuMzUsMjcuNywyNy43LDEuMDktLjAzLDEuOTksLjgzLDIuMDIsMS45MnYuMTdjLS4wNSwxLjA4LS45NCwxLjk0LTIuMDIsMS45NFoiLz4KICA8L2c+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xOTkuOSwzMS4xOHYyOS4zOGMtMi41MiwxLjMyLTUuODEsMi4zOS05Ljg3LDMuMi00LjA1LC44MS04LjE2LDEuMjItMTIuMywxLjIyLTYuMzEsMC0xMS43NS0xLjI5LTE2LjMxLTMuODgtNC41Ny0yLjU4LTguMDYtNi4zMS0xMC41LTExLjE3LTIuNDMtNC44Ny0zLjY1LTEwLjY5LTMuNjUtMTcuNDhzMS4yLTEyLjUzLDMuNi0xNy4zOWMyLjQtNC44Nyw1Ljg2LTguNTksMTAuMzYtMTEuMTdTMTcxLjA1LDAsMTc3LjE4LDBjNC40NSwwLDguNTMsLjY4LDEyLjI2LDIuMDMsMy43MiwxLjM1LDYuOTEsMy4zNSw5LjU1LDUuOTlsLTIuNzksNS42OGMtMy4wNi0yLjY0LTYuMDgtNC41NC05LjA2LTUuNjgtMi45Ny0xLjE0LTYuMjktMS43MS05Ljk2LTEuNzEtNy4xNSwwLTEyLjY1LDIuMjUtMTYuNDksNi43NnMtNS43NywxMC45Ni01Ljc3LDE5LjM3LDEuOTUsMTUuMTIsNS44NiwxOS42YzMuOSw0LjQ4LDkuNjEsNi43MSwxNy4xMiw2LjcxLDUuNDcsMCwxMC41NC0uODEsMTUuMjMtMi40M3YtMTkuMzdoLTE1Ljc3di01Ljc3aDIyLjU0WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjE0Ljg2LDY0LjI2Vi43M2g3LjM5djYzLjUzaC03LjM5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjgxLjksLjcyaDYuOTR2NjMuNTNoLTUuNjhMMjQ0Ljg2LDEzLjE2djUxLjA5aC02Ljk0Vi43Mmg1LjY4bDM4LjMsNTEuMDlWLjcyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzA0LjUyLDY0LjI2Vi43M2g0MC4xOVY2Ljg2aC0zMi44OVYyOC45NGgzMS4wOXY2LjEzaC0zMS4wOXYyMy4wN2gzMi44OXY2LjEzaC00MC4xOVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1Mi40Niw1Ni45NmwyLjg4LTUuNjhjMy4xMiwyLjY0LDYuMzIsNC41NCw5LjYsNS42OCwzLjI3LDEuMTQsNy4wNywxLjcxLDExLjQsMS43MSw1LjExLDAsOS4wNC0uOTksMTEuOC0yLjk3czQuMTUtNC43OCw0LjE1LTguMzhjMC0yLjEtLjY2LTMuODItMS45OC01LjE0LTEuMzItMS4zMi0zLjA2LTIuMzctNS4yMy0zLjE1LTIuMTYtLjc4LTUuMDgtMS41OS04Ljc0LTIuNDMtNC45My0xLjE0LTguOTctMi4zNC0xMi4xMi0zLjYtMy4xNS0xLjI2LTUuNzEtMy4wNi03LjY2LTUuNDEtMS45NS0yLjM0LTIuOTMtNS40MS0yLjkzLTkuMTlzLjk1LTYuOCwyLjg0LTkuNmMxLjg5LTIuNzksNC42LTQuOTYsOC4xMS02LjQ5QzM2OC4wOSwuNzgsMzcyLjE2LDAsMzc2Ljc5LDBjNC4zOCwwLDguNDgsLjY5LDEyLjMsMi4wNywzLjgxLDEuMzgsNy4wNCwzLjM2LDkuNjksNS45NWwtMi43OSw1LjY4Yy0zLTIuNTgtNi4wNS00LjQ2LTkuMTUtNS42M3MtNi40NC0xLjc2LTEwLjA1LTEuNzZjLTQuOTMsMC04Ljc5LDEuMDQtMTEuNTgsMy4xMS0yLjc5LDIuMDctNC4xOSw0Ljk3LTQuMTksOC43LDAsMy4xOSwxLjIzLDUuNTksMy42OSw3LjIxczYuMTksMywxMS4xNyw0LjE1YzUuNDcsMS4zMiw5Ljc2LDIuNTQsMTIuODksMy42NSwzLjEyLDEuMTEsNS43MiwyLjc4LDcuOCw1LDIuMDcsMi4yMiwzLjExLDUuMiwzLjExLDguOTJzLS45NSw2Ljc2LTIuODQsOS40NmMtMS44OSwyLjctNC42MSw0Ljc5LTguMTYsNi4yNi0zLjU1LDEuNDctNy42OSwyLjIxLTEyLjQ0LDIuMjEtOS45LDAtMTcuODMtMi42OS0yMy43OC04LjAzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjA3LC43MmwtMjQuOTYsMzMuNTJ2MzAuMDFoLTcuMzl2LTMwLjFMNDAwLjc2LC43Mmg4LjU2bDIwLjE4LDI3LjRMNDQ5LjY4LC43Mmg4LjM5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjYxLDU2Ljk2bDIuODgtNS42OGMzLjEyLDIuNjQsNi4zMiw0LjU0LDkuNiw1LjY4LDMuMjcsMS4xNCw3LjA3LDEuNzEsMTEuNCwxLjcxLDUuMTEsMCw5LjA0LS45OSwxMS44MS0yLjk3LDIuNzYtMS45OCw0LjE1LTQuNzgsNC4xNS04LjM4LDAtMi4xLS42Ni0zLjgyLTEuOTgtNS4xNC0xLjMyLTEuMzItMy4wNi0yLjM3LTUuMjMtMy4xNS0yLjE2LS43OC01LjA4LTEuNTktOC43NC0yLjQzLTQuOTMtMS4xNC04Ljk3LTIuMzQtMTIuMTItMy42LTMuMTUtMS4yNi01LjcxLTMuMDYtNy42Ni01LjQxLTEuOTUtMi4zNC0yLjkzLTUuNDEtMi45My05LjE5cy45NS02LjgsMi44NC05LjZjMS44OS0yLjc5LDQuNi00Ljk2LDguMTEtNi40OVM0NzguMzIsMCw0ODIuOTUsMGM0LjM5LDAsOC40OSwuNjksMTIuMywyLjA3czcuMDQsMy4zNiw5LjY5LDUuOTVsLTIuNzksNS42OGMtMy4wMS0yLjU4LTYuMDUtNC40Ni05LjE1LTUuNjMtMy4xLTEuMTctNi40NS0xLjc2LTEwLjA1LTEuNzYtNC45MywwLTguNzksMS4wNC0xMS41OCwzLjExLTIuNzksMi4wNy00LjE5LDQuOTctNC4xOSw4LjcsMCwzLjE5LDEuMjMsNS41OSwzLjY5LDcuMjFzNi4xOSwzLDExLjE3LDQuMTVjNS40NywxLjMyLDkuNzcsMi41NCwxMi44OSwzLjY1czUuNzIsMi43OCw3Ljc5LDUsMy4xMSw1LjIsMy4xMSw4LjkyLS45NSw2Ljc2LTIuODQsOS40NmMtMS44OSwyLjctNC42MSw0Ljc5LTguMTUsNi4yNi0zLjU1LDEuNDctNy42OSwyLjIxLTEyLjQ0LDIuMjEtOS45MSwwLTE3Ljg0LTIuNjktMjMuNzktOC4wM1oiLz4KICA8L2c+Cjwvc3ZnPg==" alt="Company Logo">
-        </div>
-		
-		<div class="quote">Power Your POS in One Tap.</div>
-		<div class="tagline">Download. Install. Go live in seconds.</div>
-
-        <h1>MPOS Application</h1>
-        <p>Click below to download the latest APK build</p>
-
-        <a class="download-btn"
-           href="https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v1.0.0/app-release.apk">
-            Download APK
-        </a>
-
-        <div class="note">
-            ⚠ Enable <b>Install from Unknown Sources</b> on your Android device
-        </div>
+    <div class="page-bg" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
     </div>
+
+    <div class="page">
+        <header class="hero">
+            <div class="logo-wrap">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDUuODMiIGhlaWdodD0iNjQuOTkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTA1LjgzIDY0Ljk5Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4uY2xzLTF7ZmlsbDojNzViZjQ1fS5jbHMtMntmaWxsOiM0MjU1NGF9LmNscy0ze2ZpbGw6dXJsKCNsaW5lYXItZ3JhZGllbnQpfTwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjE2LjkyIiB5MT0iLTU2Mi42NSIgeDI9IjE2LjkyIiB5Mj0iLTYyNy40MiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC01NjIuNDUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzc1YmY0NSIvPjxzdG9wIG9mZnNldD0iLjIxIiBzdG9wLWNvbG9yPSIjNzRiYzQ1Ii8+PHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzZhYjA0NSIvPjxzdG9wIG9mZnNldD0iLjU4IiBzdG9wLWNvbG9yPSIjNjM5ZTQ0Ii8+PHN0b3Agb2Zmc2V0PSIuNzYiIHN0b3AtY29sb3I9IiM1OTg0NDYiLz48c3RvcCBvZmZzZXQ9Ii45MyIgc3RvcC1jb2xvcj0iIzQ4NjQ0OSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzQyNTU0YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02Mi44MywzNC41OWMtMS0uMDItMS44NC0uNzUtMi4wMS0xLjc0LTIuMS0xNC4yOC0xMS43My0yOC43MS0yOC40My0yOC43MS0xNS42NSwuMDMtMjguMzQsMTIuNzItMjguMzcsMjguMzcsLjEsMS4xMS0uNzIsMi4wOC0xLjgzLDIuMTgtMS4xMSwuMS0yLjA4LS43Mi0yLjE4LTEuODMtLjAxLS4xMi0uMDEtLjIzLDAtLjM1Qy0uMDIsMTQuNjEsMTQuNDcsLjA4LDMyLjM3LC4wNmguMDJDNDguODksLjA2LDYxLjk2LDEzLjAxLDY0Ljg2LDMyLjMxYy4xNCwxLjA5LS42LDIuMS0xLjY5LDIuMjktLjExLC4wNS0uMjMsLjA1LS4zNCwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTMuMjEsNjQuOThjLTguNCwuMDYtMTYuNDQtMy40NC0yMi4xMy05LjYyLTUuNy02LjI3LTkuMjgtMTQuMTYtMTAuMjYtMjIuNTgtLjEzLTEuMTIsLjY3LTIuMTIsMS43OS0yLjI1czIuMTIsLjY3LDIuMjUsMS43OWgwYzEuODcsMTQuMjgsMTEuNCwyOC42MywyOC40MywyOC42MywxNS42OSwwLDI4LjQxLTEyLjc0LDI4LjQtMjguNDNoMGMtLjEtMS4xMSwuNzItMi4wOCwxLjgzLTIuMTgsMS4xMS0uMSwyLjA4LC43MiwyLjE4LDEuODMsMCwuMTIsMCwuMjMsMCwuMzUtLjAyLDE3LjkzLTE0LjU2LDMyLjQ2LTMyLjQ5LDMyLjQ2WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTE4LjYyLDE3LjljLS42My0uMDYtMS4yLS40LTEuNTQtLjk0QzEwOC41NiwzLjg1LDkxLjAyLC4xNCw3Ny45Miw4LjY2Yy0zLjMxLDIuMTYtNi4xNCw0Ljk4LTguMyw4LjMtLjY3LC45MS0xLjk1LDEuMS0yLjg2LC40My0uODMtLjYxLTEuMDctMS43NC0uNTctMi42NEM3NS44Ni0uMjEsOTUuODMtNC41LDExMC43OSw1LjE4YzMuODMsMi40OCw3LjEsNS43NCw5LjU3LDkuNTcsLjYsLjk0LC4zNCwyLjItLjYsMi44MS0uMywuMjgtLjczLC40MS0xLjE0LC4zNFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEyMy42NiwzNC41OWgtMjguMTdjLTEuMTEsMC0yLjAxLS45LTIuMDEtMi4wMXMuOS0yLjAxLDIuMDEtMi4wMWgyOC4xN2MxLjA5LS4wMiwxLjk4LC44NSwyLDEuOTN2LjA4Yy0uMDEsMS4xMS0uOSwyLjAxLTIsMi4wMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMyLjQ1LDY0Ljk4Yy0xMS42NiwwLTIyLjQyLTYuMjgtMjguMTUtMTYuNDMtLjItLjM0LS40LS43NC0uNi0xLjA4QzEuMzMsNDIuODcsLjA5LDM3Ljc2LC4wOCwzMi41OWMwLTEuMTEsLjktMi4wMSwyLjAxLTIuMDFzMi4wMSwuOSwyLjAxLDIuMDFjLS4wMyw0LjU0LDEuMDIsOS4wMywzLjA3LDEzLjA5LC4xNiwuMzIsLjM0LC42NCwuNTQsLjk0LDcuNjcsMTMuNjcsMjQuOTcsMTguNTQsMzguNjQsMTAuODgsMi45NS0xLjY1LDUuNTgtMy44Miw3Ljc2LTYuMzksMS4xNi0xLjM4LDIuMTgtMi44NiwzLjA3LTQuNDIsLjU2LS45NiwxLjc5LTEuMjgsMi43NS0uNzQsLjk2LC41MywxLjMsMS43NCwuNzcsMi42OSwwLC4wMi0uMDIsLjA0LS4wMywuMDUtMS4wNCwxLjgyLTIuMjQsMy41NC0zLjU5LDUuMTUtNi4yNCw3LjA2LTE1LjIsMTEuMTItMjQuNjMsMTEuMTRaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0zMS43Niw2NC45OEMxMy44Nyw2NC41OS0uMzEsNDkuNzgsLjA4LDMxLjg5LC40NiwxNC41NSwxNC40MiwuNTksMzEuNzYsLjIxYzEuMDktLjAzLDEuOTksLjgzLDIuMDEsMS45MnYuMDljLjAzLDEuMDktLjgzLDEuOTktMS45MiwyLjAxaC0uMDljLTE1LjY2LC4zNi0yOC4wNywxMy4zNi0yNy43LDI5LjAyLC4zNSwxNS4xNSwxMi41NSwyNy4zNSwyNy43LDI3LjcsMS4wOS0uMDMsMS45OSwuODMsMi4wMiwxLjkydi4xN2MtLjA1LDEuMDgtLjk0LDEuOTQtMi4wMiwxLjk0WiIvPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE5OS45LDMxLjE4djI5LjM4Yy0yLjUyLDEuMzItNS44MSwyLjM5LTkuODcsMy4yLTQuMDUsLjgxLTguMTYsMS4yMi0xMi4zLDEuMjItNi4zMSwwLTExLjc1LTEuMjktMTYuMzEtMy44OC00LjU3LTIuNTgtOC4wNi02LjMxLTEwLjUtMTEuMTctMi40My00Ljg3LTMuNjUtMTAuNjktMy42NS0xNy40OHMxLjItMTIuNTMsMy42LTE3LjM5YzIuNC00Ljg3LDUuODYtOC41OSwxMC4zNi0xMS4xN1MxNzEuMDUsMCwxNzcuMTgsMGM0LjQ1LDAsOC41My42OCwxMi4yNiwyLjAzLDMuNzIsMS4zNSw2LjkxLDMuMzUsOS41NSw1Ljk5bC0yLjc5LDUuNjhjLTMuMDYtMi42NC02LjA4LTQuNTQtOS4wNi01LjY4LTIuOTctMS4xNC02LjI5LTEuNzEtOS45Ni0xLjcxLTcuMTUsMC0xMi42NSwyLjI1LTE2LjQ5LDYuNzZzLTUuNzcsMTAuOTYtNS43NywxOS4zNywxLjk1LDE1LjEyLDUuODYsMTkuNmMzLjksNC40OCw5LjYxLDYuNzEsMTcuMTIsNi43MSw1LjQ3LDAsMTAuNTQtLjgxLDE1LjIzLTIuNDN2LTE5LjM3aC0xNS43N3YtNS43N2gyMi41NFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTIxNC44Niw2NC4yNlYuNzNoNy4zOXY2My41M2gtNy4zOVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI4MS45LC43Mmg2Ljk0djYzLjUzaC01LjY4TDI0NC44NiwxMy4xNnY1MS4wOWgtNi45NFYuNzJoNS42OGwzOC4zLDUxLjA5Vi43MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMwNC41Miw2NC4yNlYuNzNoNDAuMTlWNi44NmgtMzIuODlWMjguOTRoMzEuMDl2Ni4xM2gtMzEuMDl2MjMuMDdoMzIuODl2Ni4xM2gtNDAuMTlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zNTIuNDYsNTYuOTZsMi44OC01LjY4YzMuMTIsMi42NCw2LjMyLDQuNTQsOS42LDUuNjgsMy4yNywxLjE0LDcuMDcsMS43MSwxMS40LDEuNzEsNS4xMSwwLDkuMDQtLjk5LDExLjgtMi45N3M0LjE1LTQuNzgsNC4xNS04LjM4YzAtMi4xLS42Ni0zLjgyLTEuOTgtNS4xNC0xLjMyLTEuMzItMy4wNi0yLjM3LTUuMjMtMy4xNS0yLjE2LS43OC01LjA4LTEuNTktOC43NC0yLjQzLTQuOTMtMS4xNC04Ljk3LTIuMzQtMTIuMTItMy42LTMuMTUtMS4yNi01LjcxLTMuMDYtNy42Ni01LjQxLTEuOTUtMi4zNC0yLjkzLTUuNDEtMi45My05LjE5cy45NS02LjgsMi44NC05LjZjMS44OS0yLjc5LDQuNi00Ljk2LDguMTEtNi40OUMzNjguMDksLjc4LDM3Mi4xNiwwLDM3Ni43OSwwYzQuMzgsMCw4LjQ4LjY5LDEyLjMsMi4wNywzLjgxLDEuMzgsNy4wNCwzLjM2LDkuNjksNS45NWwtMi43OSw1LjY4Yy0zLTIuNTgtNi4wNS00LjQ2LTkuMTUtNS42M3MtNi40NC0xLjc2LTEwLjA1LTEuNzZjLTQuOTMsMC04Ljc5LDEuMDQtMTEuNTgsMy4xMS0yLjc5LDIuMDctNC4xOSw0Ljk3LTQuMTksOC43LDAsMy4xOSwxLjIzLDUuNTksMy42OSw3LjIxczYuMTksMywxMS4xNyw0LjE1YzUuNDcsMS4zMiw5Ljc2LDIuNTQsMTIuODksMy42NSwzLjEyLDEuMTEsNS43MiwyLjc4LDcuOCw1LDIuMDcsMi4yMiwzLjExLDUuMiwzLjExLDguOTJzLS45NSw2Ljc2LTIuODQsOS40NmMtMS44OSwyLjctNC42MSw0Ljc5LTguMTYsNi4yNi0zLjU1LDEuNDctNy42OSwyLjIxLTEyLjQ0LDIuMjEtOS45LDAtMTcuODMtMi42OS0yMy43OC04LjAzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjA3LC43MmwtMjQuOTYsMzMuNTJ2MzAuMDFoLTcuMzl2LTMwLjFMNDAwLjc2LC43Mmg4LjU2bDIwLjE4LDI3LjRMNDQ5LjY4LC43Mmg4LjM5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjYxLDU2Ljk2bDIuODgtNS42OGMzLjEyLDIuNjQsNi4zMiw0LjU0LDkuNiw1LjY4LDMuMjcsMS4xNCw3LjA3LDEuNzEsMTEuNCwxLjcxLDUuMTEsMCw5LjA0LS45OSwxMS44MS0yLjk3LDIuNzYtMS45OCw0LjE1LTQuNzgsNC4xNS04LjM4LDAtMi4xLS42Ni0zLjgyLTEuOTgtNS4xNC0xLjMyLTEuMzItMy4wNi0yLjM3LTUuMjMtMy4xNS0yLjE2LS43OC01LjA4LTEuNTktOC43NC0yLjQzLTQuOTMtMS4xNC04Ljk3LTIuMzQtMTIuMTItMy42LTMuMTUtMS4yNi01LjcxLTMuMDYtNy42Ni01LjQxLTEuOTUtMi4zNC0yLjkzLTUuNDEtMi45My05LjE5cy45NS02LjgsMi44NC05LjZjMS44OS0yLjc5LDQuNi00Ljk2LDguMTEtNi40OVM0NzguMzIsMCw0ODIuOTUsMGM0LjM5LDAsOC40OSwuNjksMTIuMywyLjA3LDMuODEsMS4zOCw3LjA0LDMuMzYsOS42OSw1Ljk1bC0yLjc5LDUuNjhjLTMuMDEtMi41OC02LjA1LTQuNDYtOS4xNS01LjYzLTMuMS0xLjE3LTYuNDUtMS43Ni0xMC4wNS0xLjc2LTQuOTMsMC04Ljc5LDEuMDQtMTEuNTgsMy4xMS0yLjc5LDIuMDctNC4xOSw0Ljk3LTQuMTksOC43LDAsMy4xOSwxLjIzLDUuNTksMy42OSw3LjIxczYuMTksMywxMS4xNyw0LjE1YzUuNDcsMS4zMiw5Ljc3LDIuNTQsMTIuODksMy42NSwzLjEyLDEuMTEsNS43MiwyLjc4LDcuNzksNSwyLjA3LDIuMjIsMy4xMSw1LjIsMy4xMSw4Ljkycy0uOTUsNi43Ni0yLjg0LDkuNDZjLTEuODksMi43LTQuNjEsNC43OS04LjE1LDYuMjYtMy41NSwxLjQ3LTcuNjksMi4yMS0xMi40NCwyLjIxLTkuOTEsMC0xNy44NC0yLjY5LTIzLjc5LTguMDNaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Ginesys">
+            </div>
+
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                Android Application
+            </div>
+            <h1 class="hero-title">Power Your POS in One Tap</h1>
+            <p class="hero-subtitle">Download the official MPOS app, install on your device, and go live in seconds.</p>
+
+            <div class="feature-row">
+                <span class="feature-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Secure Download
+                </span>
+                <span class="feature-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                    Android APK
+                </span>
+                <span class="feature-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Production Ready
+                </span>
+            </div>
+        </header>
+
+        <main class="card">
+            <div class="card-header">
+                <h2 class="card-title">Available Builds</h2>
+                <p class="card-desc">Select a version to download the APK package.</p>
+            </div>
+
+            <div class="section" id="erp-section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div>
+                            <div class="section-title">ERP Application</div>
+                            <div class="section-subtitle">Enterprise resource planning</div>
+                        </div>
+                    </div>
+                    <span class="section-badge" id="erp-count">0 builds</span>
+                </div>
+                <div class="version-list" id="erp-list"></div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>
+                        </div>
+                        <div>
+                            <div class="section-title">POS Application</div>
+                            <div class="section-subtitle">Mobile point of sale</div>
+                        </div>
+                    </div>
+                    <span class="section-badge" id="pos-count">0 builds</span>
+                </div>
+                <div class="version-list" id="pos-list"></div>
+            </div>
+
+            <div class="install-guide">
+                <div class="install-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Installation Guide
+                </div>
+                <div class="install-steps">
+                    <div class="install-step">
+                        <span class="step-num">1</span>
+                        <span>Tap <strong>Download</strong> and save the APK file to your device.</span>
+                    </div>
+                    <div class="install-step">
+                        <span class="step-num">2</span>
+                        <span>Enable <strong>Install from Unknown Sources</strong> in Android settings.</span>
+                    </div>
+                    <div class="install-step">
+                        <span class="step-num">3</span>
+                        <span>Open the APK file and complete installation to go live.</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            &copy; Ginesys &middot; MPOS Application Distribution
+        </footer>
+    </div>
+
+    <script>
+        const REPO = 'IceXFireSoumik/Migration_Repo';
+        const RELEASE_BASE = 'https://github.com/' + REPO + '/releases/download';
+        const SHOW_ERP = false;
+
+        const DOWNLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+        const COMPAT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+
+        const BUILDS = {
+            erp: [
+                {
+                    version: 'v1.2.0',
+                    fileName: 'erp-release-v1.2.0.apk',
+                    label: 'v1.2.0',
+                    note: 'Latest ERP build',
+                    latest: true
+                },
+                {
+                    version: 'v1.1.0',
+                    fileName: 'erp-release-v1.1.0.apk',
+                    label: 'v1.1.0',
+                    note: 'Stable ERP build'
+                },
+                {
+                    version: 'v1.0.0',
+                    fileName: 'erp-release-v1.0.0.apk',
+                    label: 'v1.0.0',
+                    note: 'Initial ERP release'
+                }
+            ],
+            pos: [
+                {
+                    version: 'v2.0.0',
+                    fileName: 'app-release.apk',
+                    label: 'v2.0.0',
+                    note: 'Latest POS build',
+                    url: 'https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v2.0.0/app-release.apk',
+                    compatibleVersion: '20.1.2',
+                    latest: true
+                },
+                {
+                    version: 'v1.0.0',
+                    fileName: 'app-release.apk',
+                    label: 'v1.0.0',
+                    url: 'https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v1.0.0/app-release.apk',
+                    compatibleVersion: '2.33.0'
+                }
+            ]
+        };
+
+        function buildDownloadUrl(version, fileName) {
+            return RELEASE_BASE + '/' + version + '/' + fileName;
+        }
+
+        function renderBuildRow(build) {
+            const row = document.createElement('div');
+            row.className = 'version-row' + (build.latest ? ' latest' : '');
+
+            const info = document.createElement('div');
+            info.className = 'version-info';
+
+            const top = document.createElement('div');
+            top.className = 'version-top';
+
+            const label = document.createElement('span');
+            label.className = 'version-label';
+            label.textContent = build.label;
+            top.appendChild(label);
+
+            if (build.latest) {
+                const pill = document.createElement('span');
+                pill.className = 'latest-pill';
+                pill.textContent = 'Latest';
+                top.appendChild(pill);
+            }
+
+            const apkPill = document.createElement('span');
+            apkPill.className = 'apk-pill';
+            apkPill.textContent = 'APK';
+            top.appendChild(apkPill);
+
+            info.appendChild(top);
+
+            if (build.note) {
+                const meta = document.createElement('div');
+                meta.className = 'version-meta';
+                meta.textContent = build.note;
+                info.appendChild(meta);
+            }
+
+            if (build.compatibleVersion) {
+                const compat = document.createElement('div');
+                compat.className = 'version-compat';
+                compat.innerHTML = COMPAT_ICON + ' Compatible Version: ' + build.compatibleVersion;
+                info.appendChild(compat);
+            }
+
+            const link = document.createElement('a');
+            link.className = 'download-btn';
+            link.href = build.url || buildDownloadUrl(build.version, build.fileName);
+            link.innerHTML = DOWNLOAD_ICON + ' Download';
+            link.setAttribute('download', '');
+
+            row.appendChild(info);
+            row.appendChild(link);
+            return row;
+        }
+
+        function renderSection(sectionKey, containerId, countId) {
+            const container = document.getElementById(containerId);
+            const countEl = document.getElementById(countId);
+            const builds = BUILDS[sectionKey] || [];
+
+            container.innerHTML = '';
+            countEl.textContent = builds.length + ' build' + (builds.length === 1 ? '' : 's');
+
+            if (builds.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'empty-state';
+                empty.textContent = 'No builds available yet.';
+                container.appendChild(empty);
+                return;
+            }
+
+            builds.forEach(function (build) {
+                container.appendChild(renderBuildRow(build));
+            });
+        }
+
+        if (SHOW_ERP) {
+            renderSection('erp', 'erp-list', 'erp-count');
+        } else {
+            document.getElementById('erp-section').hidden = true;
+        }
+        renderSection('pos', 'pos-list', 'pos-count');
+    </script>
 </body>
 </html>
