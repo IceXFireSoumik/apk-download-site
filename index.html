@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Download MPOS App</title>
+    <title>Ginesys Mobile Applications</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download the latest Ginesys MPOS Android application.">
+    <meta name="description" content="Official Android application distribution for Ginesys mobile solutions.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,9 +97,9 @@ body {
 .page {
     position: relative;
     z-index: 1;
-    max-width: 560px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 40px 20px 48px;
+    padding: 40px 24px 48px;
     animation: fadeUp 0.6s ease-out;
 }
 
@@ -116,7 +116,7 @@ body {
 
 .hero {
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
 }
 
 .logo-wrap {
@@ -167,7 +167,7 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(1.75rem, 5vw, 2.125rem);
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.15;
@@ -181,7 +181,7 @@ body {
 .hero-subtitle {
     font-size: 15px;
     color: var(--text-muted);
-    max-width: 340px;
+    max-width: 520px;
     margin: 0 auto 20px;
 }
 
@@ -211,82 +211,80 @@ body {
     opacity: 0.8;
 }
 
-.card {
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
     background: rgba(15, 23, 42, 0.72);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-xl);
     padding: 28px 24px;
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(20px);
+    min-width: 0;
 }
 
-.card-header {
+.product-header {
     margin-bottom: 22px;
     padding-bottom: 18px;
     border-bottom: 1px solid var(--border);
 }
 
-.card-title {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-}
-
-.card-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-.section {
-    margin-bottom: 8px;
-}
-
-.section-header {
+.product-header-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
 
-.section-title-group {
+.product-title-group {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
 }
 
-.section-icon {
+.product-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     background: rgba(117, 191, 69, 0.12);
     border: 1px solid rgba(117, 191, 69, 0.2);
     color: var(--brand);
     flex-shrink: 0;
 }
 
-.section-icon svg {
-    width: 18px;
-    height: 18px;
+.product-icon svg {
+    width: 20px;
+    height: 20px;
 }
 
-.section-title {
-    font-size: 15px;
+.product-name {
+    font-size: 18px;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
 }
 
-.section-subtitle {
+.product-tagline {
     font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 1px;
+    font-weight: 600;
+    color: var(--brand);
+    letter-spacing: 0.01em;
 }
 
-.section-badge {
+.product-badge {
     font-size: 11px;
     font-weight: 700;
     padding: 5px 10px;
@@ -295,12 +293,20 @@ body {
     background: var(--surface);
     border: 1px solid var(--border);
     white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.product-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
 }
 
 .version-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    flex: 1;
 }
 
 .version-row {
@@ -324,12 +330,6 @@ body {
     background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(117, 191, 69, 0.06) 100%);
     border-color: var(--accent-border);
     box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.08) inset;
-}
-
-.version-row.latest::before {
-    content: '';
-    position: absolute;
-    left: 0;
 }
 
 .version-top {
@@ -399,8 +399,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-width: 128px;
-    padding: 12px 18px;
+    min-width: 118px;
+    padding: 12px 16px;
     font-family: inherit;
     font-size: 14px;
     font-weight: 700;
@@ -434,20 +434,23 @@ body {
     outline-offset: 3px;
 }
 
-.install-guide {
-    margin-top: 24px;
-    padding-top: 22px;
-    border-top: 1px solid var(--border);
+.support-card {
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
 }
 
 .install-title {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-soft);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .install-title svg {
@@ -457,9 +460,9 @@ body {
 }
 
 .install-steps {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
 }
 
 .install-step {
@@ -468,6 +471,10 @@ body {
     gap: 12px;
     font-size: 13px;
     color: var(--text-muted);
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
 }
 
 .step-num {
@@ -507,12 +514,23 @@ body {
     border-radius: var(--radius-md);
 }
 
+@media (max-width: 900px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .install-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 520px) {
     .page {
         padding: 28px 16px 40px;
     }
 
-    .card {
+    .product-card,
+    .support-card {
         padding: 22px 16px;
     }
 
@@ -545,15 +563,15 @@ body {
     <div class="page">
         <header class="hero">
             <div class="logo-wrap">
-                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDUuODMiIGhlaWdodD0iNjQuOTkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTA1LjgzIDY0Ljk5Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4uY2xzLTF7ZmlsbDojNzViZjQ1fS5jbHMtMntmaWxsOiM0MjU1NGF9LmNscy0ze2ZpbGw6dXJsKCNsaW5lYXItZ3JhZGllbnQpfTwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjE2LjkyIiB5MT0iLTU2Mi42NSIgeDI9IjE2LjkyIiB5Mj0iLTYyNy40MiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC01NjIuNDUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzc1YmY0NSIvPjxzdG9wIG9mZnNldD0iLjIxIiBzdG9wLWNvbG9yPSIjNzRiYzQ1Ii8+PHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzZhYjA0NSIvPjxzdG9wIG9mZnNldD0iLjU4IiBzdG9wLWNvbG9yPSIjNjM5ZTQ0Ii8+PHN0b3Agb2Zmc2V0PSIuNzYiIHN0b3AtY29sb3I9IiM1OTg0NDYiLz48c3RvcCBvZmZzZXQ9Ii45MyIgc3RvcC1jb2xvcj0iIzQ4NjQ0OSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzQyNTU0YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02Mi44MywzNC41OWMtMS0uMDItMS44NC0uNzUtMi4wMS0xLjc0LTIuMS0xNC4yOC0xMS43My0yOC43MS0yOC40My0yOC43MS0xNS42NSwuMDMtMjguMzQsMTIuNzItMjguMzcsMjguMzcsLjEsMS4xMS0uNzIsMi4wOC0xLjgzLDIuMTgtMS4xMSwuMS0yLjA4LS43Mi0yLjE4LTEuODMtLjAxLS4xMi0uMDEtLjIzLDAtLjM1Qy0uMDIsMTQuNjEsMTQuNDcsLjA4LDMyLjM3LC4wNmguMDJDNDguODksLjA2LDYxLjk2LDEzLjAxLDY0Ljg2LDMyLjMxYy4xNCwxLjA5LS42LDIuMS0xLjY5LDIuMjktLjExLC4wNS0uMjMsLjA1LS4zNCwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTMuMjEsNjQuOThjLTguNCwuMDYtMTYuNDQtMy40NC0yMi4xMy05LjYyLTUuNy02LjI3LTkuMjgtMTQuMTYtMTAuMjYtMjIuNTgtLjEzLTEuMTIsLjY3LTIuMTIsMS43OS0yLjI1czIuMTIsLjY3LDIuMjUsMS43OWgwYzEuODcsMTQuMjgsMTEuNCwyOC42MywyOC40MywyOC42MywxNS42OSwwLDI4LjQxLTEyLjc0LDI4LjQtMjguNDNoMGMtLjEtMS4xMSwuNzItMi4wOCwxLjgzLTIuMTgsMS4xMS0uMSwyLjA4LC43MiwyLjE4LDEuODMsMCwuMTIsMCwuMjMsMCwuMzUtLjAyLDE3LjkzLTE0LjU2LDMyLjQ2LTMyLjQ5LDMyLjQ2WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTE4LjYyLDE3LjljLS42My0uMDYtMS4yLS40LTEuNTQtLjk0QzEwOC41NiwzLjg1LDkxLjAyLC4xNCw3Ny45Miw4LjY2Yy0zLjMxLDIuMTYtNi4xNCw0Ljk4LTguMyw4LjMtLjY3LC45MS0xLjk1LDEuMS0yLjg2LC40My0uODMtLjYxLTEuMDctMS43NC0uNTctMi42NEM3NS44Ni0uMjEsOTUuODMtNC41LDExMC43OSw1LjE4YzMuODMsMi40OCw3LjEsNS43NCw5LjU3LDkuNTcsLjYsLjk0LC4zNCwyLjItLjYsMi44MS0uMywuMjgtLjczLC40MS0xLjE0LC4zNFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEyMy42NiwzNC41OWgtMjguMTdjLTEuMTEsMC0yLjAxLS45LTIuMDEtMi4wMXMuOS0yLjAxLDIuMDEtMi4wMWgyOC4xN2MxLjA5LS4wMiwxLjk4LC44NSwyLDEuOTN2LjA4Yy0uMDEsMS4xMS0uOSwyLjAxLTIsMi4wMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMyLjQ1LDY0Ljk4Yy0xMS42NiwwLTIyLjQyLTYuMjgtMjguMTUtMTYuNDMtLjItLjM0LS40LS43NC0uNi0xLjA4QzEuMzMsNDIuODcsLjA5LDM3Ljc2LC4wOCwzMi41OWMwLTEuMTEsLjktMi4wMSwyLjAxLTIuMDFzMi4wMSwuOSwyLjAxLDIuMDFjLS4wMyw0LjU0LDEuMDIsOS4wMywzLjA3LDEzLjA5LC4xNiwuMzIsLjM0LC42NCwuNTQsLjk0LDcuNjcsMTMuNjcsMjQuOTcsMTguNTQsMzguNjQsMTAuODgsMi45NS0xLjY1LDUuNTgtMy44Miw3Ljc2LTYuMzksMS4xNi0xLjM4LDIuMTgtMi44NiwzLjA3LTQuNDIsLjU2LS45NiwxLjc5LTEuMjgsMi43NS0uNzQsLjk2LC41MywxLjMsMS43NCwuNzcsMi42OSwwLC4wMi0uMDIsLjA0LS4wMywuMDUtMS4wNCwxLjgyLTIuMjQsMy41NC0zLjU5LDUuMTUtNi4yNCw3LjA2LTE1LjIsMTEuMTItMjQuNjMsMTEuMTRaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0zMS43Niw2NC45OEMxMy44Nyw2NC41OS0uMzEsNDkuNzgsLjA4LDMxLjg5LC40NiwxNC41NSwxNC40MiwuNTksMzEuNzYsLjIxYzEuMDktLjAzLDEuOTksLjgzLDIuMDEsMS45MnYuMDljLjAzLDEuMDktLjgzLDEuOTktMS45MiwyLjAxaC0uMDljLTE1LjY2LC4zNi0yOC4wNywxMy4zNi0yNy43LDI5LjAyLC4zNSwxNS4xNSwxMi41NSwyNy4zNSwyNy43LDI3LjcsMS4wOS0uMDMsMS45OSwuODMsMi4wMiwxLjkydi4xN2MtLjA1LDEuMDgtLjk0LDEuOTQtMi4wMiwxLjk0WiIvPgogIDwvZz4KICA8Zz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE5OS45LDMxLjE4djI5LjM4Yy0yLjUyLDEuMzItNS44MSwyLjM5LTkuODcsMy4yLTQuMDUsLjgxLTguMTYsMS4yMi0xMi4zLDEuMjItNi4zMSwwLTExLjc1LTEuMjktMTYuMzEtMy44OC00LjU3LTIuNTgtOC4wNi02LjMxLTEwLjUtMTEuMTctMi40My00Ljg3LTMuNjUtMTAuNjktMy42NS0xNy40OHMxLjItMTIuNTMsMy42LTE3LjM5YzIuNC00Ljg3LDUuODYtOC41OSwxMC4zNi0xMS4xN1MxNzEuMDUsMCwxNzcuMTgsMGM0LjQ1LDAsOC41My42OCwxMi4yNiwyLjAzLDMuNzIsMS4zNSw2LjkxLDMuMzUsOS41NSw1Ljk5bC0yLjc5LDUuNjhjLTMuMDYtMi42NC02LjA4LTQuNTQtOS4wNi01LjY4LTIuOTctMS4xNC02LjI5LTEuNzEtOS45Ni0xLjcxLTcuMTUsMC0xMi42NSwyLjI1LTE2LjQ5LDYuNzZzLTUuNzcsMTAuOTYtNS43NywxOS4zNywxLjk1LDE1LjEyLDUuODYsMTkuNmMzLjksNC40OCw5LjYxLDYuNzEsMTcuMTIsNi43MSw1LjQ3LDAsMTAuNTQtLjgxLDE1LjIzLTIuNDN2LTE5LjM3aC0xNS43N3YtNS43N2gyMi41NFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTIxNC44Niw2NC4yNlYuNzNoNy4zOXY2My41M2gtNy4zOVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI4MS45LC43Mmg2Ljk0djYzLjUzaC01LjY4TDI0NC44NiwxMy4xNnY1MS4wOWgtNi45NFYuNzJoNS42OGwzOC4zLDUxLjA5Vi43MloiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMwNC41Miw2NC4yNlYuNzNoNDAuMTlWNi44NmgtMzIuODlWMjguOTRoMzEuMDl2Ni4xM2gtMzEuMDl2MjMuMDdoMzIuODl2Ni4xM2gtNDAuMTlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0zNTIuNDYsNTYuOTZsMi44OC01LjY4YzMuMTIsMi42NCw2LjMyLDQuNTQsOS42LDUuNjgsMy4yNywxLjE0LDcuMDcsMS43MSwxMS40LDEuNzEsNS4xMSwwLDkuMDQtLjk5LDExLjgtMi45N3M0LjE1LTQuNzgsNC4xNS04LjM4YzAtMi4xLS42Ni0zLjgyLTEuOTgtNS4xNC0xLjMyLTEuMzItMy4wNi0yLjM3LTUuMjMtMy4xNS0yLjE2LS43OC01LjA4LTEuNTktOC43NC0yLjQzLTQuOTMtMS4xNC04Ljk3LTIuMzQtMTIuMTItMy42LTMuMTUtMS4yNi01LjcxLTMuMDYtNy42Ni01LjQxLTEuOTUtMi4zNC0yLjkzLTUuNDEtMi45My05LjE5cy45NS02LjgsMi44NC05LjZjMS44OS0yLjc5LDQuNi00Ljk2LDguMTEtNi40OUMzNjguMDksLjc4LDM3Mi4xNiwwLDM3Ni43OSwwYzQuMzgsMCw4LjQ4LjY5LDEyLjMsMi4wNywzLjgxLDEuMzgsNy4wNCwzLjM2LDkuNjksNS45NWwtMi43OSw1LjY4Yy0zLTIuNTgtNi4wNS00LjQ2LTkuMTUtNS42M3MtNi40NC0xLjc2LTEwLjA1LTEuNzZjLTQuOTMsMC04Ljc5LDEuMDQtMTEuNTgsMy4xMS0yLjc5LDIuMDctNC4xOSw0Ljk3LTQuMTksOC43LDAsMy4xOSwxLjIzLDUuNTksMy42OSw3LjIxczYuMTksMywxMS4xNyw0LjE1YzUuNDcsMS4zMiw5Ljc2LDIuNTQsMTIuODksMy42NSwzLjEyLDEuMTEsNS43MiwyLjc4LDcuOCw1LDIuMDcsMi4yMiwzLjExLDUuMiwzLjExLDguOTJzLS45NSw2Ljc2LTIuODQsOS40NmMtMS44OSwyLjctNC42MSw0Ljc5LTguMTYsNi4yNi0zLjU1LDEuNDctNy42OSwyLjIxLTEyLjQ0LDIuMjEtOS45LDAtMTcuODMtMi42OS0yMy43OC04LjAzWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjA3LC43MmwtMjQuOTYsMzMuNTJ2MzAuMDFoLTcuMzl2LTMwLjFMNDAwLjc2LC43Mmg4LjU2bDIwLjE4LDI3LjRMNDQ5LjY4LC43Mmg4LjM5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNDU4LjYxLDU2Ljk2bDIuODgtNS42OGMzLjEyLDIuNjQsNi4zMiw0LjU0LDkuNiw1LjY4LDMuMjcsMS4xNCw3LjA3LDEuNzEsMTEuNCwxLjcxLDUuMTEsMCw5LjA0LS45OSwxMS44MS0yLjk3LDIuNzYtMS45OCw0LjE1LTQuNzgsNC4xNS04LjM4LDAtMi4xLS42Ni0zLjgyLTEuOTgtNS4xNC0xLjMyLTEuMzItMy4wNi0yLjM3LTUuMjMtMy4xNS0yLjE2LS43OC01LjA4LTEuNTktOC43NC0yLjQzLTQuOTMtMS4xNC04Ljk3LTIuMzQtMTIuMTItMy42LTMuMTUtMS4yNi01LjcxLTMuMDYtNy42Ni01LjQxLTEuOTUtMi4zNC0yLjkzLTUuNDEtMi45My05LjE5cy45NS02LjgsMi44NC05LjZjMS44OS0yLjc5LDQuNi00Ljk2LDguMTEtNi40OVM0NzguMzIsMCw0ODIuOTUsMGM0LjM5LDAsOC40OSwuNjksMTIuMywyLjA3LDMuODEsMS4zOCw3LjA0LDMuMzYsOS42OSw1Ljk1bC0yLjc5LDUuNjhjLTMuMDEtMi41OC02LjA1LTQuNDYtOS4xNS01LjYzLTMuMS0xLjE3LTYuNDUtMS43Ni0xMC4wNS0xLjc2LTQuOTMsMC04Ljc5LDEuMDQtMTEuNTgsMy4xMS0yLjc5LDIuMDctNC4xOSw0Ljk3LTQuMTksOC43LDAsMy4xOSwxLjIzLDUuNTksMy42OSw3LjIxczYuMTksMywxMS4xNyw0LjE1YzUuNDcsMS4zMiw5Ljc3LDIuNTQsMTIuODksMy42NSwzLjEyLDEuMTEsNS43MiwyLjc4LDcuNzksNSwyLjA3LDIuMjIsMy4xMSw1LjIsMy4xMSw4Ljkycy0uOTUsNi43Ni0yLjg0LDkuNDZjLTEuODksMi43LTQuNjEsNC43OS04LjE1LDYuMjYtMy41NSwxLjQ3LTcuNjksMi4yMS0xMi40NCwyLjIxLTkuOTEsMC0xNy44NC0yLjY5LTIzLjc5LTguMDNaIi8+CiAgPC9nPgo8L3N2Zz4=" alt="Ginesys">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDUuODMiIGhlaWdodD0iNjQuOTkiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTA1LjgzIDY0Ljk5Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4uY2xzLTF7ZmlsbDojNzViZjQ1fS5jbHMtMntmaWxsOiM0MjU1NGF9LmNscy0ze2ZpbGw6dXJsKCNsaW5lYXItZ3JhZGllbnQpfTwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjE2LjkyIiB5MT0iLTU2Mi42NSIgeDI9IjE2LjkyIiB5Mj0iLTYyNy40MiIgZ3JhZGllbnRUcmFuc2Zvcm09InRyYW5zbGF0ZSgwIC01NjIuNDUpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzc1YmY0NSIvPjxzdG9wIG9mZnNldD0iLjIxIiBzdG9wLWNvbG9yPSIjNzRiYzQ1Ii8+PHN0b3Agb2Zmc2V0PSIuNCIgc3RvcC1jb2xvcj0iIzZhYjA0NSIvPjxzdG9wIG9mZnNldD0iLjU4IiBzdG9wLWNvbG9yPSIjNjM5ZTQ0Ii8+PHN0b3Agb2Zmc2V0PSIuNzYiIHN0b3AtY29sb3I9IiM1OTg0NDYiLz48c3RvcCBvZmZzZXQ9Ii45MyIgc3RvcC1jb2xvcj0iIzQ4NjQ0OSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzQyNTU0YSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGc+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02Mi44MywzNC41OWMtMS0uMDItMS44NC0uNzUtMi4wMS0xLjc0LTIuMS0xNC4yOC0xMS43My0yOC43MS0yOC40My0yOC43MS0xNS42NSwuMDMtMjguMzQsMTIuNzItMjguMzcsMjguMzcsLjEsMS4xMS0uNzIsMi4wOC0xLjgzLDIuMTgtMS4xMSwuMS0yLjA4LS43Mi0yLjE4LTEuODMtLjAxLS4xMi0uMDEtLjIzLDAtLjM1Qy0uMDIsMTQuNjEsMTQuNDcsLjA4LDMyLjM3LC4wNmguMDJDNDguODksLjA2LDYxLjk2LDEzLjAxLDY0Ljg2LDMyLjMxYy4xNCwxLjA5LS42LDIuMS0xLjY5LDIuMjktLjExLC4wNS0uMjMsLjA1LS4zNCwwWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTMuMjEsNjQuOThjLTguNCwuMDYtMTYuNDQtMy40NC0yMi4xMy05LjYyLTUuNy02LjI3LTkuMjgtMTQuMTYtMTAuMjYtMjIuNTgtLjEzLTEuMTIsLjY3LTIuMTIsMS43OS0yLjI1czIuMTIsLjY3LDIuMjUsMS43OWgwYzEuODcsMTQuMjgsMTEuNCwyOC42MywyOC40MywyOC42MywxNS42OSwwLDI4LjQxLTEyLjc0LDI4LjQtMjguNDNoMGMtLjEtMS4xMSwuNzItMi4wOCwxLjgzLTIuMTgsMS4xMS0uMSwyLjA4LC43MiwyLjE4LDEuODMsMCwuMTIsMCwuMjMsMCwuMzUtLjAyLDE3LjkzLTE0LjU2LDMyLjQ2LTMyLjQ5LDMyLjQ2WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTE4LjYyLDE3LjljLS42My0uMDYtMS4yLS40LTEuNTQtLjk0QzEwOC41NiwzLjg1LDkxLjAyLC4xNCw3Ny45Miw4LjY2Yy0zLjMxLDIuMTYtNi4xNCw0Ljk4LTguMyw4LjMtLjY3LC45MS0xLjk1LDEuMS0yLjg2LC40My0uODMtLjYxLTEuMDctMS43NC0uNTctMi42NEM3NS44Ni0uMjEsOTUuODMtNC41LDExMC43OSw1LjE4YzMuODMsMi40OCw3LjEsNS43NCw5LjU3LDkuNTcsLjYsLjk0LC4zNCwyLjItLjYsMi44MS0uMywuMjgtLjczLC40MS0xLjE0LC4zNFoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEyMy42NiwzNC41OWgtMjguMTdjLTEuMTEsMC0yLjAxLS45LTIuMDEtMi4wMXMuOS0yLjAxLDIuMDEtMi4wMWgyOC4xN2MxLjA5LS4wMiwxLjk4LC44NSwyLDEuOTN2LjA4Yy0uMDEsMS4xMS0uOSwyLjAxLTIsMi4wMVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTMyLjQ1LDY0Ljk4Yy0xMS42NiwwLTIyLjQyLTYuMjgtMjguMTUtMTYuNDMtLjItLjM0LS40LS43NC0uNi0xLjA4QzEuMzMsNDIuODcsLjA5LDM3Ljc2LC4wOCwzMi41OWMwLTEuMTEsLjktMi4wMSwyLjAxLTIuMDFzMi4wMSwuOSwyLjAxLDIuMDFjLS4wMyw0LjU0LDEuMDIsOS4wMywzLjA3LDEzLjA5LC4xNiwuMzIsLjM0LC42NCwuNTQsLjk0LDcuNjcsMTMuNjcsMjQuOTcsMTguNTQsMzguNjQsMTAuODgsMi45NS0xLjY1LDUuNTgtMy44Miw3Ljc2LTYuMzksMS4xNi0xLjM4LDIuMTgtMi44NiwzLjA3LTQuNDIsLjU2LS45NiwxLjc5LTEuMjgsMi43NS0uNzQsLjk2LC41MywxLjMsMS43NCwuNzcsMi42OSwwLC4wMi0uMDIsLjA0LS4wMywuMDUtMS4wNCwxLjgyLTIuMjQsMy41NC0zLjU5LDUuMTUtNi4yNCw3LjA2LTE1LjIsMTEuMTItMjQuNjMsMTEuMTRaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0zMS43Niw2NC45OEMxMy44Nyw2NC41OS0uMzEsNDkuNzgsLjA4LDMxLjg5LC40NiwxNC41NSwxNC40MiwwLjU5LDMxLjc2LC4yMWMxLjA5LS4wMywxLjk5LC44MywyLjAxLDEuOTJ2LjA5Yy4wMywxLjA5LS44MywxLjk5LTEuOTIsMi4wMWgtLjA5Yy0xNS42NiwwLjM2LTI4LjA3LDEzLjM2LTI3LjcsMjkuMDIsLjM1LDE1LjE1LDEyLjU1LDI3LjM1LDI3LjcsMjcuNywxLjA5LS4wMywxLjk5LC44MywyLjAyLDEuOTJ2LjE3Yy0uMDUsMS4wOC0uOTQsMS45NC0yLjAyLDEuOTRaIi8+CiAgPC9nPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMTk5LjksMzEuMTh2MjkuMzhjLTIuNTIsMS4zMi01LjgxLDIuMzktOS44NywzLjItNC4wNSwuODEtOC4xNiwxLjIyLTEyLjMsMS4yMi02LjMxLDAtMTEuNzUtMS4yOS0xNi4zMS0zLjg4LTQuNTctMi41OC04LjA2LTYuMzEtMTAuNS0xMS4xNy0yLjQzLTQuODctMy42NS0xMC42OS0zLjY1LTE3LjQ4czEuMi0xMi41MywzLjYtMTcuMzljMi40LTQuODcsNS44Ni04LjU5LDEwLjM2LTExLjE3UzE3MS4wNSwwLDE3Ny4xOCwwYzQuNDUsMCw4LjUzLjY4LDEyLjI2LDIuMDMsMy43MiwxLjM1LDYuOTEsMy4zNSw5LjU1LDUuOTlsLTIuNzksNS42OGMtMy4wNi0yLjY0LTYuMDgtNC41NC05LjA2LTUuNjgtMi45Ny0xLjE0LTYuMjktMS43MS05Ljk2LTEuNzEtNy4xNSwwLTEyLjY1LDIuMjUtMTYuNDksNi43NnMtNS43NywxMC45Ni01Ljc3LDE5LjM3LDEuOTUsMTUuMTIsNS44NiwxOS42YzMuOSw0LjQ4LDkuNjEsNi43MSwxNy4xMiw2LjcxLDUuNDcsMCwxMC41NC0uODEsMTUuMjMtMi40M3YtMTkuMzdoLTE1Ljc3di01Ljc3aDIyLjU0WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjE0Ljg2LDY0LjI2Vi43M2g3LjM5djYzLjUzaC03LjM5WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMjgxLjksLjcyaDYuOTR2NjMuNTNoLTUuNjhMMjQ0Ljg2LDEzLjE2djUxLjA5aC02Ljk0Vi43Mmg1LjY4bDM4LjMsNTEuMDlWLjcyWiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNMzA0LjUyLDY0LjI2Vi43M2g0MC4xOVY2Ljg2aC0zMi44OVYyOC45NGgzMS4wOXY2LjEzaC0zMS4wOXYyMy4wN2gzMi44OXY2LjEzaC00MC4xOVoiLz4KICAgIDxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTM1Mi40Niw1Ni45NmwyLjg4LTUuNjhjMy4xMiwyLjY0LDYuMzIsNC41NCw5LjYsNS42OCwzLjI3LDEuMTQsNy4wNywxLjcxLDExLjQsMS43MSw1LjExLDAsOS4wNC0uOTksMTEuOC0yLjk3czQuMTUtNC43OCw0LjE1LTguMzhjMC0yLjEtLjY2LTMuODItMS45OC01LjE0LTEuMzItMS4zMi0zLjA2LTIuMzctNS4yMy0zLjE1LTIuMTYtLjc4LTUuMDgtMS41OS04Ljc0LTIuNDMtNC45My0xLjE0LTguOTctMi4zNC0xMi4xMi0zLjYtMy4xNS0xLjI2LTUuNzEtMy4wNi03LjY2LTUuNDEtMS45NS0yLjM0LTIuOTMtNS40MS0yLjkzLTkuMTlzLjk1LTYuOCwyLjg0LTkuNmMxLjg5LTIuNzksNC42LTQuOTYsOC4xMS02LjQ5QzM2OC4wOSwuNzgsMzcyLjE2LDAsMzc2Ljc5LDBjNC4zOCwwLDguNDguNjksMTIuMywyLjA3LDMuODEsMS4zOCw3LjA0LDMuMzYsOS42OSw1Ljk1bC0yLjc5LDUuNjhjLTMtMi41OC02LjA1LTQuNDYtOS4xNS01LjYzcy02LjQ0LTEuNzYtMTAuMDUtMS43NmMtNC45MywwLTguNzksMS4wNC0xMS41OCwzLjExLTIuNzksMi4wNy00LjE5LDQuOTctNC4xOSw4LjcsMCwzLjE5LDEuMjMsNS41OSwzLjY5LDcuMjFzNi4xOSwzLDExLjE3LDQuMTVjNS40NywxLjMyLDkuNzYsMi41NCwxMi44OSwzLjY1LDMuMTIsMS4xMSw1LjcyLDIuNzgsNy44LDUsMi4wNywyLjIyLDMuMTEsNS4yLDMuMTEsOC45MnMtLjk1LDYuNzYtMi44NCw5LjQ2Yy0xLjg5LDIuNy00LjYxLDQuNzktOC4xNiw2LjI2LTMuNTUsMS40Ny03LjY5LDIuMjEtMTIuNDQsMi4yMS05LjksMC0xNy44My0yLjY5LTIzLjc4LTguMDNaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00NTguMDcsLjcybC0yNC45NiwzMy41MnYzMC4wMWgtNy4zOXYtMzAuMUw0MDAuNzYsLjcyaDguNTZsMjAuMTgsMjcuNEw0NDkuNjgsLjcyaDguMzlaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00NTguNjEsNTYuOTZsMi44OC01LjY4YzMuMTIsMi42NCw2LjMyLDQuNTQsOS42LDUuNjgsMy4yNywxLjE0LDcuMDcsMS43MSwxMS40LDEuNzEsNS4xMSwwLDkuMDQtLjk5LDExLjgxLTIuOTcsMi43Ni0xLjk4LDQuMTUtNC43OCw0LjE1LTguMzgsMC0yLjEtLjY2LTMuODItMS45OC01LjE0LTEuMzItMS4zMi0zLjA2LTIuMzctNS4yMy0zLjE1LTIuMTYtLjc4LTUuMDgtMS41OS04Ljc0LTIuNDMtNC45My0xLjE0LTguOTctMi4zNC0xMi4xMi0zLjYtMy4xNS0xLjI2LTUuNzEtMy4wNi03LjY2LTUuNDEtMS45NS0yLjM0LTIuOTMtNS40MS0yLjkzLTkuMTlzLjk1LTYuOCwyLjg0LTkuNmMxLjg5LTIuNzksNC42LTQuOTYsOC4xMS02LjQ5UzQ3OC4zMiwwLDQ4Mi45NSwwYzQuMzksMCw4LjQ5LC42OSwxMi4zLDIuMDcsMy44MSwxLjM4LDcuMDQsMy4zNiw5LjY5LDUuOTVsLTIuNzksNS42OGMtMy4wMS0yLjU4LTYuMDUtNC40Ni05LjE1LTUuNjMtMy4xLTEuMTctNi40NS0xLjc2LTEwLjA1LTEuNzYtNC45MywwLTguNzksMS4wNC0xMS41OCwzLjExLTIuNzksMi4wNy00LjE5LDQuOTctNC4xOSw4LjcsMCwzLjE5LDEuMjMsNS41OSwzLjY5LDcuMjFzNi4xOSwzLDExLjE3LDQuMTVjNS40NywxLjMyLDkuNzcsMi41NCwxMi44OSwzLjY1LDMuMTIsMS4xMSw1LjcyLDIuNzgsNy43OSw1LDIuMDcsMi4yMiwzLjExLDUuMiwzLjExLDguOTJzLS45NSw2Ljc2LTIuODQsOS40NmMtMS44OSwyLjctNC42MSw0Ljc5LTguMTUsNi4yNi0zLjU1LDEuNDctNy42OSwyLjIxLTEyLjQ0LDIuMjEtOS45MSwwLTE3Ljg0LTIuNjktMjMuNzktOC4wM1oiLz4KICA8L2c+Cjwvc3ZnPg==" alt="Ginesys">
             </div>
 
             <div class="hero-badge">
                 <span class="hero-badge-dot"></span>
-                Android Application
+                Official Distribution Portal
             </div>
-            <h1 class="hero-title">Power Your POS in One Tap</h1>
-            <p class="hero-subtitle">Download the official MPOS app, install on your device, and go live in seconds.</p>
+            <h1 class="hero-title">Mobile Application Downloads</h1>
+            <p class="hero-subtitle">Access the latest approved Android builds for your organisation. Select a product below to download the appropriate installation package.</p>
 
             <div class="feature-row">
                 <span class="feature-chip">
@@ -568,52 +586,55 @@ body {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                     Production Ready
                 </span>
-				<span class="feature-chip">
+                <span class="feature-chip">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                     SaaS Customer Only
                 </span>
             </div>
         </header>
 
-        <main class="card">
-            <div class="card-header">
-                <h2 class="card-title">Available Builds</h2>
-                <p class="card-desc">Select a version to download the APK package.</p>
-            </div>
-
-            <div class="section" id="erp-section">
-                <div class="section-header">
-                    <div class="section-title-group">
-                        <div class="section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <main>
+            <div class="products">
+                <section class="product-card" id="erp-section" aria-labelledby="erp-heading">
+                    <div class="product-header">
+                        <div class="product-header-top">
+                            <div class="product-title-group">
+                                <div class="product-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </div>
+                                <div>
+                                    <h2 class="product-name" id="erp-heading">ERP Application</h2>
+                                    <div class="product-tagline">Enterprise Resource Planning</div>
+                                </div>
+                            </div>
+                            <span class="product-badge" id="erp-count">0 builds</span>
                         </div>
-                        <div>
-                            <div class="section-title">ERP Application</div>
-                            <div class="section-subtitle">Enterprise resource planning</div>
-                        </div>
+                        <p class="product-desc">Mobile application within the Ginesys ERP suite.</p>
                     </div>
-                    <span class="section-badge" id="erp-count">0 builds</span>
-                </div>
-                <div class="version-list" id="erp-list"></div>
-            </div>
+                    <div class="version-list" id="erp-list"></div>
+                </section>
 
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title-group">
-                        <div class="section-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>
+                <section class="product-card" id="mpos-section" aria-labelledby="mpos-heading">
+                    <div class="product-header">
+                        <div class="product-header-top">
+                            <div class="product-title-group">
+                                <div class="product-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg>
+                                </div>
+                                <div>
+                                    <h2 class="product-name" id="mpos-heading">MPOS Application</h2>
+                                    <div class="product-tagline">Mobile Extension of GPOS</div>
+                                </div>
+                            </div>
+                            <span class="product-badge" id="mpos-count">0 builds</span>
                         </div>
-                        <div>
-                            <div class="section-title">POS Application</div>
-                            <div class="section-subtitle">Mobile point of sale</div>
-                        </div>
+                        <p class="product-desc">MPOS is the mobile extension of GPOS, enabling on-the-go retail transactions and store operations.</p>
                     </div>
-                    <span class="section-badge" id="pos-count">0 builds</span>
-                </div>
-                <div class="version-list" id="pos-list"></div>
+                    <div class="version-list" id="mpos-list"></div>
+                </section>
             </div>
 
-            <div class="install-guide">
+            <div class="support-card">
                 <div class="install-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                     Installation Guide
@@ -636,14 +657,14 @@ body {
         </main>
 
         <footer class="page-footer">
-            &copy; Ginesys &middot; MPOS Application Distribution
+            &copy; Ginesys &middot; Official Mobile Application Distribution
         </footer>
     </div>
 
     <script>
         const REPO = 'IceXFireSoumik/Migration_Repo';
         const RELEASE_BASE = 'https://github.com/' + REPO + '/releases/download';
-        const SHOW_ERP = false;
+        const SHOW_ERP = true;
 
         const DOWNLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
         const COMPAT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -651,31 +672,22 @@ body {
         const BUILDS = {
             erp: [
                 {
-                    version: 'v1.2.0',
-                    fileName: 'erp-release-v1.2.0.apk',
-                    label: 'v1.2.0',
-                    note: 'Latest ERP build',
+                    version: 'v2.2.0',
+                    fileName: 'erp-release-v2.2.0.apk',
+                    label: 'v2.2.0',
+                    note: 'Latest ERP package',
+                    url: 'https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v2.2.0/WMS_10_AUG_release.apk',
+                    compatibleVersion: '20.3.0',
                     latest: true
-                },
-                {
-                    version: 'v1.1.0',
-                    fileName: 'erp-release-v1.1.0.apk',
-                    label: 'v1.1.0',
-                    note: 'Stable ERP build'
-                },
-                {
-                    version: 'v1.0.0',
-                    fileName: 'erp-release-v1.0.0.apk',
-                    label: 'v1.0.0',
-                    note: 'Initial ERP release'
                 }
+		
             ],
-            pos: [
+            mpos: [
                 {
                     version: 'v2.0.0',
                     fileName: 'app-release.apk',
                     label: 'v2.0.0',
-                    note: 'Latest POS build',
+                    note: 'Latest MPOS package',
                     url: 'https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v2.0.0/app-release.apk',
                     compatibleVersion: '20.1.2',
                     latest: true
@@ -684,6 +696,7 @@ body {
                     version: 'v1.0.0',
                     fileName: 'app-release.apk',
                     label: 'v1.0.0',
+                    note: 'Stable MPOS package',
                     url: 'https://github.com/IceXFireSoumik/Migration_Repo/releases/download/v1.0.0/app-release.apk',
                     compatibleVersion: '2.33.0'
                 }
@@ -694,7 +707,7 @@ body {
             return RELEASE_BASE + '/' + version + '/' + fileName;
         }
 
-        function renderBuildRow(build) {
+        function renderBuildRow(build, options) {
             const row = document.createElement('div');
             row.className = 'version-row' + (build.latest ? ' latest' : '');
 
@@ -733,7 +746,8 @@ body {
             if (build.compatibleVersion) {
                 const compat = document.createElement('div');
                 compat.className = 'version-compat';
-                compat.innerHTML = COMPAT_ICON + ' Compatible POS Version: ' + build.compatibleVersion;
+                const compatLabel = (options && options.compatLabel) || 'Compatible Version';
+                compat.innerHTML = COMPAT_ICON + ' ' + compatLabel + ': ' + build.compatibleVersion;
                 info.appendChild(compat);
             }
 
@@ -748,7 +762,7 @@ body {
             return row;
         }
 
-        function renderSection(sectionKey, containerId, countId) {
+        function renderSection(sectionKey, containerId, countId, options) {
             const container = document.getElementById(containerId);
             const countEl = document.getElementById(countId);
             const builds = BUILDS[sectionKey] || [];
@@ -765,7 +779,7 @@ body {
             }
 
             builds.forEach(function (build) {
-                container.appendChild(renderBuildRow(build));
+                container.appendChild(renderBuildRow(build, options));
             });
         }
 
@@ -774,7 +788,9 @@ body {
         } else {
             document.getElementById('erp-section').hidden = true;
         }
-        renderSection('pos', 'pos-list', 'pos-count');
+        renderSection('mpos', 'mpos-list', 'mpos-count', {
+            compatLabel: 'Compatible GPOS Version'
+        });
     </script>
 </body>
 </html>
